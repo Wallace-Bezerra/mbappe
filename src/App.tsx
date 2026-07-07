@@ -32,9 +32,9 @@ const T: Record<Lang, {
     trophies: "Trophies",
     contact: "Contact",
     badge: "No. 10 · France",
-    eyebrow: "Les Bleus · The Phenomenon",
+    eyebrow: "Les Bleus · The Dictator",
     subtitle:
-      "Speed, composure and an invisible crown. Move your mouse to reveal the emperor behind the number 10.",
+      "Speed, composure and an iron will. Move your mouse to reveal the dictator behind the number 10.",
     hint: "Move your mouse to reveal",
   },
   fr: {
@@ -42,9 +42,9 @@ const T: Record<Lang, {
     trophies: "Palmarès",
     contact: "Contact",
     badge: "N° 10 · France",
-    eyebrow: "Les Bleus · Le Phénomène",
+    eyebrow: "Les Bleus · Le Dictateur",
     subtitle:
-      "Vitesse, sang-froid et une couronne invisible. Déplacez la souris pour révéler l'empereur derrière le numéro 10.",
+      "Vitesse, sang-froid et une volonté de fer. Déplacez la souris pour révéler le dictateur derrière le numéro 10.",
     hint: "Déplacez la souris pour révéler",
   },
   pt: {
@@ -52,9 +52,9 @@ const T: Record<Lang, {
     trophies: "Títulos",
     contact: "Contato",
     badge: "Nº 10 · França",
-    eyebrow: "Les Bleus · O Fenômeno",
+    eyebrow: "Les Bleus · O Ditador",
     subtitle:
-      "Velocidade, frieza e uma coroa invisível. Passe o mouse e revele o imperador por trás do camisa 10.",
+      "Velocidade, frieza e um punho de ferro. Passe o mouse e revele o ditador por trás do camisa 10.",
     hint: "Passe o mouse para revelar",
   },
 };

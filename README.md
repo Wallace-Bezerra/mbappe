@@ -1,7 +1,7 @@
-<h1 align="center">👑 MBAPPÉ — The Hidden Emperor</h1>
+<h1 align="center">👑 MBAPPÉ — The Dictator</h1>
 
 <p align="center">
-  <b>Move your mouse over the striker… and reveal the general underneath.</b><br>
+  <b>Move your mouse over the striker… and reveal the dictator underneath.</b><br>
   A one-page web experiment with a cursor-driven <i>spotlight reveal</i> effect and a slick EN / FR / PT language switcher.
 </p>
 
@@ -17,7 +17,9 @@
 
 ## ✨ The trick
 
-Two photos of the same man. One is the **striker** (Les Bleus, No. 10). The other is the **emperor** — same pose, same framing. A spotlight follows your cursor and **paints away** the first image to reveal the second, only where you point.
+Two photos of the same man. One is the **striker** (Les Bleus, No. 10). The other is the **dictator** — same pose, same framing. A spotlight follows your cursor and **paints away** the first image to reveal the second, only where you point.
+
+> 😅 Yes, it's *that* meme — "Mbappé the dictator/general" — turned into a slick web toy.
 
 <table>
   <tr>
@@ -85,7 +87,7 @@ The reveal is three stacked layers inside a full-screen `<section>`:
 
 1. **Base image** (`z-10`) — the striker, always visible.
 2. **Reveal image** (`z-30`) — the emperor, but **masked**.
-3. A hidden `<canvas>` draws a soft **radial gradient** at the cursor every frame, exports it with `toDataURL()`, and applies it as a **CSS `mask-image`** on layer 2. White in the mask = visible, transparent = hidden → the emperor only shows inside the spotlight.
+3. A hidden `<canvas>` draws a soft **radial gradient** at the cursor every frame, exports it with `toDataURL()`, and applies it as a **CSS `mask-image`** on layer 2. White in the mask = visible, transparent = hidden → the dictator only shows inside the spotlight.
 
 A `requestAnimationFrame` loop eases a `smooth` cursor toward the real mouse (`lerp` factor `0.1`) so the light glides instead of snapping. The same smoothed position nudges the background grid for a subtle parallax.
 
