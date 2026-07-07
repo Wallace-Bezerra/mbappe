@@ -112,7 +112,26 @@ This is a **fan-made, non-commercial web experiment** built to showcase a front-
 
 ---
 
+## 👋 Author
+
+Made by **Wallace** — front-end / creative dev.
+
+<p align="left">
+  <a href="https://www.instagram.com/wallacebz.dev/">
+    <img alt="Instagram" src="https://img.shields.io/badge/@wallacebz.dev-E4405F?style=for-the-badge&logo=instagram&logoColor=white">
+  </a>
+</p>
+
+Follow for more web experiments → **[@wallacebz.dev](https://www.instagram.com/wallacebz.dev/)**
+
+---
+
 <p align="center">
   Built with ⚡ Vite and a bit of canvas trickery.<br>
   <b>If the effect made you smile, drop a ⭐ — it helps a lot!</b>
+</p>
+
+<p align="center">
+  <a href="https://www.instagram.com/wallacebz.dev/">Instagram</a> ·
+  <a href="https://github.com/Wallace-Bezerra/mbappe">GitHub</a>
 </p>
