@@ -3,8 +3,8 @@ import { MousePointer2, Star } from "lucide-react";
 
 // ── Assets locais (troque estes 2 arquivos em /public pelas suas fotos) ──
 // BASE = Mbappé normal (camisa da França) · REVEAL = Mbappé "general" (aparece sob o mouse)
-const BASE_IMAGE = "/mbappe-base.webp";
-const REVEAL_IMAGE = "/mbappe-reveal.webp";
+const BASE_IMAGE = "/mbappe-base.png";
+const REVEAL_IMAGE = "/mbappe-reveal.png";
 
 // ── Constants ──
 const SPOTLIGHT_R = 260;
