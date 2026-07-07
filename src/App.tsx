@@ -1,5 +1,20 @@
 import { useEffect, useRef, useState } from "react";
 import { MousePointer2, Star, Globe, ChevronDown, Check } from "lucide-react";
+import { gsap } from "gsap";
+import { useGSAP } from "@gsap/react";
+
+/** Divide um texto em <span> por letra (para animar cada uma com stagger). */
+function SplitText({ text }: { text: string }) {
+  return (
+    <>
+      {text.split("").map((ch, i) => (
+        <span key={i} className="char inline-block will-change-transform">
+          {ch}
+        </span>
+      ))}
+    </>
+  );
+}
 
 // ── Assets locais (troque estes 2 arquivos em /public pelas suas fotos) ──
 const BASE_IMAGE = "/mbappe-base.png";
@@ -202,6 +217,53 @@ export default function App() {
   const patternRef = useRef<SVGPatternElement>(null);
   const sectionRef = useRef<HTMLElement>(null);
 
+  const textRef = useRef<HTMLDivElement>(null);
+  const eyebrowRef = useRef<HTMLParagraphElement>(null);
+  const subtitleRef = useRef<HTMLParagraphElement>(null);
+
+  const firstLangRender = useRef(true);
+
+  // Entrada (mount, roda UMA vez): chamada → letras do nome (flip 3D) → subtítulo.
+  // useGSAP com { scope } roda uma vez e é seguro no StrictMode.
+  useGSAP(
+    () => {
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+      const tl = gsap.timeline();
+      tl.from(eyebrowRef.current, { y: 18, autoAlpha: 0, duration: 0.7, ease: "power3.out" }, 0.1)
+        .from(
+          ".char",
+          {
+            yPercent: 120,
+            autoAlpha: 0,
+            rotateX: -85,
+            transformOrigin: "50% 100%",
+            duration: 0.9,
+            ease: "power4.out",
+            stagger: 0.038,
+          },
+          0.2,
+        )
+        .from(subtitleRef.current, { y: 22, autoAlpha: 0, duration: 0.8, ease: "power3.out" }, 0.65);
+    },
+    { scope: textRef },
+  );
+
+  // Re-anima chamada + subtítulo ao trocar de idioma (pula o mount).
+  // fromTo com estado final explícito evita o "stuck hidden" do from + revert.
+  useEffect(() => {
+    if (firstLangRender.current) {
+      firstLangRender.current = false;
+      return;
+    }
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    const els = [eyebrowRef.current, subtitleRef.current].filter(Boolean) as HTMLElement[];
+    gsap.fromTo(
+      els,
+      { y: 16, autoAlpha: 0 },
+      { y: 0, autoAlpha: 1, duration: 0.55, ease: "power3.out", stagger: 0.1, overwrite: true },
+    );
+  }, [lang]);
+
   useEffect(() => {
     const cx0 = window.innerWidth / 2;
     const cy0 = window.innerHeight / 2;
@@ -294,16 +356,22 @@ export default function App() {
         <div aria-hidden className="absolute inset-0 z-40 bg-gradient-to-r from-black/70 via-transparent to-transparent pointer-events-none" />
 
         {/* 5. Texto */}
-        <div className="absolute bottom-10 left-5 z-50 max-w-md sm:bottom-14 sm:left-8 md:left-12">
-          <p className="mb-3 text-[11px] font-semibold uppercase tracking-[0.24em] text-[#d4af37]">
+        <div ref={textRef} className="absolute bottom-10 left-5 z-50 max-w-md sm:bottom-14 sm:left-8 md:left-12">
+          <p ref={eyebrowRef} className="mb-3 text-[11px] font-semibold uppercase tracking-[0.24em] text-[#d4af37]">
             {t.eyebrow}
           </p>
-          <h1 className="text-5xl font-black leading-[0.9] tracking-tight text-white sm:text-6xl md:text-7xl">
-            KYLIAN
-            <br />
-            MBAPPÉ
+          <h1
+            className="text-5xl font-black leading-[0.92] tracking-tight text-white sm:text-6xl md:text-7xl"
+            style={{ perspective: "700px" }}
+          >
+            <span className="block">
+              <SplitText text="KYLIAN" />
+            </span>
+            <span className="block">
+              <SplitText text="MBAPPÉ" />
+            </span>
           </h1>
-          <p className="mt-5 max-w-sm text-sm leading-relaxed text-white/70 sm:text-base">
+          <p ref={subtitleRef} className="mt-5 max-w-sm text-sm leading-relaxed text-white/70 sm:text-base">
             {t.subtitle}
           </p>
         </div>
