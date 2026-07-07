@@ -318,6 +318,16 @@ export default function App() {
           {t.hint}
         </div>
       </section>
+
+      {/* Crédito discreto */}
+      <a
+        href="https://www.instagram.com/wallacebz.dev/"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="fixed bottom-3 right-4 z-50 text-[11px] font-medium tracking-wide text-white/35 transition-colors hover:text-[#d4af37]"
+      >
+        created by <span className="font-semibold">@wallacebz.dev</span>
+      </a>
     </div>
   );
 }
